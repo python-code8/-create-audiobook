@@ -1,0 +1,13 @@
+# pip install pyttsx3 #pip install PyPDF2 
+# use the above commands in terminal to install these packages
+import pyttsx3, PyPDF2
+pdfReader = PyPDF2.PdfFileReader(open( 'file.pdf', 'rb'))
+                                          # ^ enter your pdf name
+
+speaker = pyttsx3. init()
+
+for page_num in range(pdfReader.numPages ):
+    text = pdfReader.getPage(page_num).extractText()
+    speaker.say(text)
+    speaker.runAndWait()
+speaker.stop()
